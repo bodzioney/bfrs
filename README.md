@@ -11,3 +11,5 @@ cargo build
 ```sh 
 ./bfrs file.bf
 ```
+
+![](bfrs.png)
