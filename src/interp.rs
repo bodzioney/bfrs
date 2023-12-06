@@ -1,9 +1,9 @@
 use std::io::{stdin, Read};
 
 pub fn interp(program: &str) {
-    let mut data: [u8; 30000] = [0; 30000];
-    let mut ind = 0;
-    
+    let mut tape: [u8; 30000] = [0; 30000];
+    let mut pointer = 0;
+
     let mut tbl = vec![0; program.len()];
 
     // Populate jump table
@@ -23,19 +23,19 @@ pub fn interp(program: &str) {
     let instructions = program.as_bytes();
     let mut i = 0;
     while i < program.len() {
-         match instructions[i] as char {
-            '>' => ind += 1,
-            '<' => ind -= 1,
-            '+' => data[ind] = data[ind].wrapping_add(1),
-            '-' => data[ind] = data[ind].wrapping_sub(1),
-            '.' => print!("{}", data[ind] as char),
+        match instructions[i] as char {
+            '>' => pointer += 1,
+            '<' => pointer -= 1,
+            '+' => tape[pointer] = tape[pointer].wrapping_add(1),
+            '-' => tape[pointer] = tape[pointer].wrapping_sub(1),
+            '.' => print!("{}", tape[pointer] as char),
             '[' => {
-                if data[ind] == 0 {
+                if tape[pointer] == 0 {
                     i = tbl[i]
                 }
             }
             ']' => {
-                if data[ind] != 0 {
+                if tape[pointer] != 0 {
                     i = tbl[i]
                 }
             }
