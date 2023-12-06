@@ -1,4 +1,5 @@
 A simple Brainfuck interpreter written in rust
+(with pointer wrapping)
 
 ### Building
 1. Run cargo build:
