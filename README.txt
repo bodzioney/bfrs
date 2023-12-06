@@ -1,1 +1,1 @@
-A simple Brainfuck interpreter written in rust
+### A simple Brainfuck interpreter written in rust
